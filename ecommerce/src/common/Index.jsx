@@ -1,4 +1,4 @@
-const backendDomain="http://localhost:9000"
+const backendDomain="https://full-stack-ecommerce-0vrv.onrender.com"
 
 const summaryApi={
     signup:{
