@@ -1,7 +1,7 @@
 // const express=require('express');
 // const userModel= require('../models/userModel')
 const userModel = require("../../models/userModel"); // Updated path
-const bcrypt=require('bcrypt');
+const bcrypt=require('bcryptjs');
 
 
 
