@@ -8,7 +8,7 @@
 
     const app=express()
     app.use(cors({
-        origin: 'https://full-stack-ecommerce-frontend-1ynq.onrender.com/', // Allow requests from this origin
+        origin: 'https://full-stack-ecommerce-frontend-1ynq.onrender.com', // Allow requests from this origin
         credentials: true // Allow cookies and authentication headers
       }));
     app.use(express.json())

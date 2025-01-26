@@ -1,4 +1,4 @@
-const backendDomain="https://full-stack-ecommerce-0vrv.onrender.com"
+const backendDomain="https://full-stack-ecommerce-backend-szui.onrender.com"
 
 const summaryApi={
     signup:{
