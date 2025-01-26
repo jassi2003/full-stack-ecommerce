@@ -1,33 +1,72 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import summaryApi from '../common/Index.jsx';
+import Context from '../context/index.js';
 
 
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { fetchUserDetails, fetchCountProductsInCart } = useContext(Context)
+
+  // console.log("generalContext",generalContext.fetch)
+
   const [showPassword, setShowPassword] = useState(true);
-  const [data,setData]=useState({
-    email:"",
-    password:""
-})
+  const [data, setData] = useState({
+    email: "",
+    password: ""
+  })
 
-const handleOnChange=(e)=>{
-const{name,value}=e.target
-setData((prev)=>{
-  return {
-    ...prev,
-    [name]:value
+  const handleOnChange = (e) => {
+    const { name, value } = e.target
+    setData((prev) => {
+      return {
+        ...prev,
+        [name]: value
+      }
+    })
   }
-})
-}
 
-console.log("data login",data) 
+  console.log("data login", data)
 
 
-  const handleSubmit=(e)=>{
-e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const dataResponse = await fetch(summaryApi.login.url, {
+      method: summaryApi.login.method,
+      credentials: 'include',
+
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+
+    console.log("datares", dataResponse);
+
+    const dataApi = await dataResponse.json()
+    console.log("dataapi", dataApi);
+
+
+    // if(dataApi.success){
+    //   toast.success(dataApi.message)
+    //   navigate("/")
+    // }
+    // or you can also use below snippet
+    if (dataResponse.status == 200) {
+      toast.success(dataApi.message)
+      navigate("/")
+      fetchUserDetails()
+      fetchCountProductsInCart()
+    }
+
+    if (dataApi.error) {
+      toast.error(dataApi.message)
+    }
   }
 
   return (

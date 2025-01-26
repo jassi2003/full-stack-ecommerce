@@ -13,7 +13,7 @@ const {name,email,password}=req.body;
  const user= await userModel.findOne({email})
 
  if(user){
-    throw new Error("user already exists")
+    throw new Error("user already exists,please login...")
  }
 
 console.log("req.body",req.body)
@@ -36,6 +36,7 @@ if(!hashPassword){
 
 const payload={
     ...req.body,
+    role:"GENERAL",
     password:hashPassword
 }
 
@@ -45,7 +46,7 @@ res.status(201).json({
     data:saveUser,
     suceess:true,
     error:false,
-    message:"user created successfully"
+    message:"user created successfully!!!"
 })
 
 

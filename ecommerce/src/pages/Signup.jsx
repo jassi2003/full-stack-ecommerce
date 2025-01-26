@@ -2,16 +2,17 @@ import React from 'react'
 import { useState } from 'react'
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { GiClick } from "react-icons/gi";
 import imageTobase64 from '../helpers/ImageTobase64';
 import summaryApi from '../common/Index.jsx';
-import axios from 'axios';
+// import axios from 'axios';
 import { toast } from 'react-toastify';
 
 
 
 const Signup = () => {
+    const navigate=useNavigate();
     const [showPassword, setShowPassword] = useState(true);
     const [data,setData]=useState({
         name:"",
@@ -36,60 +37,36 @@ const Signup = () => {
 
 const handleSubmit = async(e) =>{
     e.preventDefault()
-
-      const dataResponse = await fetch(summaryApi.signUp.url,{
-          method : summaryApi.signUp.method,
+          const dataResponse = await fetch(summaryApi.signup.url,{
+          method : summaryApi.signup.method,
+          credentials:'include',
           headers : {
               "content-type" : "application/json"
           },
           body : JSON.stringify(data)
         })
   
+        console.log("datares",dataResponse);
+  
         const dataApi = await dataResponse.json()
+        console.log("dataapi",dataApi);
 
-        if(dataApi.success){
+
+        if(dataResponse.status==201){
           toast.success(dataApi.message)
           navigate("/login")
         }
+        // if(dataApi.success){
+        //   toast.success(dataApi.message)
+        //   navigate("/login")
+        // }
 
         if(dataApi.error){
           toast.error(dataApi.message)
         }
   
-    else{
-      toast.error("Please check password and confirm password")
-    }
 
 }
-
-// const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     console.log("Sending data:", data);
-
-//     try {
-//       const res = await axios.post("http://localhost:8000/api/signup", data, {
-//         headers: {
-//           'Content-Type': 'application/json'
-//         },
-//         withCredentials: true
-//       });
-//       console.log("Server response:", res.data);
-
-//       if (res.data.success) {
-//         //  toast.success(res.data.message); // This will show a success toast
-//         console.log("user created successfully")
-//         // navigate("/login");
-//       }
-//     } catch (error) {
-//         // Enhanced error logging
-//         console.error("Error details: ", error.response ? error.response.data : error.message);
-//         // toast.error(error.response?.data?.message || "Signup failed. Please try again."); // Show server error message if available
-//       }
-//   };
-
-
-
-
 
 
 const handleOnChange=(e)=>{
@@ -101,7 +78,7 @@ const handleOnChange=(e)=>{
       }
     })
     }
-    // console.log("data login",data)
+    console.log("data login",data)
 
 
     
