@@ -76,7 +76,7 @@ const VerticalComp = ({ category, heading }) => {
                                 return (
                                     <div className=''>
 
-                                        <div className='overflow-hidden bg-slate-200 h-full min-w-[100px] md:min-w-[145px] h-[180px]  rounded-t-md p-2'>
+                                        <div className='overflow-hidden bg-slate-200 h-full min-w-[100px] md:min-w-[145px] h-[180px]   rounded-t-md p-2'>
                                             <img src="" className='w-full h-full rounded-md overflow-hidden hover:scale-110 transition-all mix-blend-multiply ' alt="" />
                                         </div>
                                         <div className='p-2 bg-white rounded-b-md capitalize w-full border min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] flex shadow flex-col items-center'>
@@ -104,7 +104,7 @@ const VerticalComp = ({ category, heading }) => {
                                 return (
                                     <Link to={"/product/" + product._id} className='' onClick={()=>window.scrollTo({top:0,behaviour:'smooth'})}>
 
-                                        <div className='overflow-hidden bg-slate-200 h-full min-w-[60px]  md:min-w-[145px] h-[130px] md:h-[180px]  mt-[120px] md:mt-1 rounded-t-md p-2'>
+                                        <div className='overflow-hidden bg-slate-200 min-w-[60px]   md:min-w-[145px] h-[130px] md:h-[180px]  mt-[120px] md:mt-1 rounded-t-md p-2'>
                                             <img src={product.productImage[0]} className='w-[160px] h-full rounded-md overflow-hidden hover:scale-110 transition-all mix-blend-multiply ' alt="" />
                                         </div>
                                         <div className='p-2 bg-white rounded-b-md capitalize w-full border min-w-[220px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] flex shadow flex-col items-center'>
