@@ -18,7 +18,7 @@
     
     app.use("/api",router)
 
-    const PORT=9000 || process.env.PORT
+    const PORT=process.env.PORT || 9000
 
     connectDB().then(()=>{
     app.listen(PORT,()=>{
