@@ -11,7 +11,7 @@ const app = express();
 app.use(cors({
     origin: 'https://full-stack-ecommerce-frontend-1ynq.onrender.com', // Allow deployed frontend
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Explicitly allow all methods
-    allowedHeaders: ['Content-Type', 'Authorization'],    // Allow necessary headers
+    allowedHeaders: ['Content-Type', 'Authorization','token'],    // Allow necessary headers
     credentials: true // Allow cookies and authentication headers
 }));
 
